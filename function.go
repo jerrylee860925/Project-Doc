@@ -1,7 +1,11 @@
-/*
-Package customer contains all the information pertaining
-the customer stakeholder
-*/
+/*************************************************
+function.go contains all function that are needed 
+in both http server and middleware. 
+ *
+* @author  zhijie li 
+* @author  haoyan wu
+* @data 09-02-2016
+**************************************************/
 package customer
 import (
     "fmt"
@@ -12,8 +16,11 @@ import (
     "time"
       "gopkg.in/mgo.v2/bson"
 )
-/*
-database error handler
+/**
+ * @description the function handles an mongodb error, user input an err
+ 	or the function prints the error if the error is not nil
+ * @param  err the error user wants to handle
+ * @return void
 */
 func errhandler(err error) {
   if err != nil {
@@ -293,31 +300,9 @@ func recivemsg(nc net.Conn,database string){
 
     update("mycc.cit.iupui.edu",oldOrder,nOrder,"client1",collection)
 
-
-
-   /* if(newOrderNum != oldOrderNum){
-      if newOrderNum< oldOrderNum {
-        //send update message
-      }else{
-        if(newOrderNum == 8 ){
-          if collection == "Customer" {
-          //finalize
-          }else{
-          //keep updating
-          }
-        }
-       if(newOrderNum ==9){
-        //update
-
-       }
-    }
-
-  }
-*/
 }
 //index server
 //db clients
-//
 func GetSupplierList(collection []string) []string{
   var mOrder []Order
   for i := 0; i < len(collection); i++ {
