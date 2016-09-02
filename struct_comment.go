@@ -17,8 +17,8 @@ import (
  * clients with another client's name and IP address.
 */
 type indexServer struct{
-	ReqType int                                     //to differentiate request for responding
-	Name string                                     //clients' name
+  ReqType int                                     //to differentiate request for responding
+  Name string                                     //clients' name
   IpAddr string                                   //corresponding client's IP address 
   ID bson.ObjectId `bson:"_id,omitempty"`         //unique ID of each object which contains client's names and IPs
 }
@@ -31,14 +31,14 @@ type indexServer struct{
 type Order struct {
   ID        bson.ObjectId `bson:"_id,omitempty"`  //unique ID of each order
   OrderList ProductList                           //substruct containing a list of info of product
-	CustomerName,CustomerCode string                //customer's name and it's unique ID
+  CustomerName,CustomerCode string                //customer's name and it's unique ID
   SupplierName,SupplierCode string                //supplier's name and it's unique ID
   CarrierName,CarrierCode string                  //carrier's name and it's unique ID
   Origin,Dest string                              //origin and destination of the shipment
   OrderSts OrderStatus                            //substruct containing the status of shipment
-	PickUptime string                               //the time fo r supplier when the truck will arrive 
-	ETA int                                         //estimated time of arrival
-	OrderDate string                                //the time the order has been placed
+  PickUptime string                               //the time fo r supplier when the truck will arrive 
+  ETA int                                         //estimated time of arrival
+  OrderDate string                                //the time the order has been placed
 }
 
 /**
@@ -59,9 +59,9 @@ type OrderStatus struct{
  * the basic info of product
 */
 type product struct {
-	ProductName,ProductCode string                  //product's name and it's unique ID
+  ProductName,ProductCode string                  //product's name and it's unique ID
   ProductState,UnitMeasure string                 
-	UnitPrice,Quantity float64
+  UnitPrice,Quantity float64
 }
 
 /**
@@ -70,7 +70,7 @@ type product struct {
  * list of product
 */
 type ProductList struct{
-	ListOfProduct []product
+  ListOfProduct []product
 }
 
 /**
