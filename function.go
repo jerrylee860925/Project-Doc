@@ -29,7 +29,13 @@ func errhandler(err error) {
     }
 }
 /*
-update certain database
+ * @description the function update a certain record in a particular collection of a mongodb
+ * @param string databaseAddr the IP address of the server that contains the database is installed 
+ * @param Order old the old order record user wants to modify 
+ * @param Order new the new order record user wanto to replace with
+ * @param string database the name of the database that contains the collection
+ * @param string collection the name of the collection that contains the order record 
+ * @return void
 */
 func update(databaseAddr string,old Order,new Order,database string,collection string ){
      session, err := mgo.Dial(databaseAddr)
@@ -40,7 +46,14 @@ func update(databaseAddr string,old Order,new Order,database string,collection s
      err = d.Update(old,new)
 }
 
-/*find old order by its id*/
+/*
+ * @description the function searches a particular order record from given database 
+ * @param string databaseAddr the IP address of the server that contains the database is installed 
+ * @param string database the name of the database that contains the collection
+ * @param string collection the name of the collection that contains the order record 
+ * @param string hexID the ID of the record 
+ * @return Order the order that is found in database, an empty order is returned if nothing found in database 
+*/
 func findOldOrder(databaseAddr string,database string,collection string,hexID string) Order{
   var result Order
   session, err := mgo.Dial(databaseAddr)
@@ -57,7 +70,14 @@ func findOldOrder(databaseAddr string,database string,collection string,hexID st
   }
   return result
 }
-/*get all unfinished order*/
+/*
+ * @description the function searches a particular order record from given database 
+ * @param string databaseAddr the IP address of the server that contains the database is installed 
+ * @param string database the name of the database that contains the collection
+ * @param string collection the name of the collection that contains the order record 
+ * @param
+ * @return []Order
+ */
 
 func GetUnfinishedOrder(databaseAddr string,database string,collection string) []Order{
   var result []Order
