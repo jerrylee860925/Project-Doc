@@ -1,0 +1,268 @@
+{{define "page"}}<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="/stylesheets/orders.css">
+	<!--<script src="/scripts/orders.js"></script>-->
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">supplies</a>
+			</div>
+			<div class="col-md-6" id="search-bar">
+				<input type="text" id="search-bar-input" class="form-control" placeholder="Input order ID">
+			</div>
+			<div class="col-md-1" id="search-btn">
+				<button id="search-btn-input" class="btn btn-primary btn-block" onclick="processRequest()">Search</button>			
+			</div>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#">Settings</a></li>
+				<li><a href="#">Log Out</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<!-- Breadcrumb -->
+	<div class="container-fluid" id="breadcrumb">
+		<ol class="breadcrumb">
+			<li><a href="#">home</a></li>
+			<li class="active">orders</li>
+		</ol>
+	</div>
+	
+	
+	<!-- List of Orders -->
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-3 side-bar">
+				<h4 id="filter-header">Refine Search</h4>
+
+				<form action="/orders/" method="POST" id="filter-form">				
+					<div class="form-group">
+						
+						<div class="row well" id="date-well">
+							<div class="col-sm-6 from">
+								<h5 class="panel-title">From</h5>
+								<select name="start-month">
+									<option value=1>Jan</option>
+									<option value=2>Feb</option>
+									<option value=3>Mar</option>
+									<option value=4>Apr</option>
+									<option value=5>May</option>
+									<option value=6>Jun</option>
+									<option value=7>Jul</option>
+									<option value=8>Aug</option>
+									<option value=9>Sep</option>
+									<option value=10>Oct</option>
+									<option value=11>Nov</option>
+									<option value=12>Dec</option>
+								</select>
+
+								<select name="start-day">
+									<option value=1>1</option>
+									<option value=2>2</option>
+									<option value=3>3</option>
+									<option value=4>4</option>
+									<option value=5>5</option>
+									<option value=6>6</option>
+									<option value=7>7</option>
+									<option value=8>8</option>
+									<option value=9>9</option>
+									<option value=10>10</option>
+									<option value=11>11</option>
+									<option value=12>12</option>
+									<option value=13>13</option>
+									<option value=14>14</option>
+									<option value=15>15</option>
+									<option value=16>16</option>
+									<option value=17>17</option>
+									<option value=18>18</option>
+									<option value=19>19</option>
+									<option value=20>20</option>
+									<option value=21>21</option>
+									<option value=22>22</option>
+									<option value=23>23</option>
+									<option value=24>24</option>
+									<option value=25>25</option>
+									<option value=26>26</option>
+									<option value=27>27</option>
+									<option value=28>28</option>
+									<option value=29>29</option>
+									<option value=30>30</option>
+									<option value=31>31</option>
+								</select>
+				
+								<select name="start-year">
+									<option>2016</option>
+									<option>2015</option>
+									<option>2014</option>
+								</select>
+							</div>
+
+							<div class="col-sm-6 to">
+								<h5 class="panel-title">To</h5>
+								<select name="end-month">
+									<option value=1>Jan</option>
+									<option value=2>Feb</option>
+									<option value=3>Mar</option>
+									<option value=4>Apr</option>
+									<option value=5>May</option>
+									<option value=6>Jun</option>
+									<option value=7>Jul</option>
+									<option value=8>Aug</option>
+									<option value=9>Sep</option>
+									<option value=10>Oct</option>
+									<option value=11>Nov</option>
+									<option value=12>Dec</option>
+								</select>
+
+								<select name="end-day">
+									<option value=1>1</option>
+									<option value=2>2</option>
+									<option value=3>3</option>
+									<option value=4>4</option>
+									<option value=5>5</option>
+									<option value=6>6</option>
+									<option value=7>7</option>
+									<option value=8>8</option>
+									<option value=9>9</option>
+									<option value=10>10</option>
+									<option value=11>11</option>
+									<option value=12>12</option>
+									<option value=13>13</option>
+									<option value=14>14</option>
+									<option value=15>15</option>
+									<option value=16>16</option>
+									<option value=17>17</option>
+									<option value=18>18</option>
+									<option value=19>19</option>
+									<option value=20>20</option>
+									<option value=21>21</option>
+									<option value=22>22</option>
+									<option value=23>23</option>
+									<option value=24>24</option>
+									<option value=25>25</option>
+									<option value=26>26</option>
+									<option value=27>27</option>
+									<option value=28>28</option>
+									<option value=29>29</option>
+									<option value=30>30</option>
+									<option value=31>31</option>
+								</select>
+												
+								<select name="end-year">
+									<option>2016</option>
+									<option>2015</option>
+									<option>2014</option>
+								</select>
+							</div>
+						</div>
+						
+						
+						
+						<div class="panel-group">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title"><a id="origin-drop" data-toggle="collapse" href="#origin-collapse">Origin State<span id="origin-icon-drop" class="glyphicon glyphicon-chevron-right"></span></a></h4>
+								</div>
+								<div id="origin-collapse" class="panel-collapse collapse">
+									<ul class="list-group">
+										{{range .Origins}}
+										<li class="list-group-item"><label><input type="checkbox" name="from-state" value="{{.}}">{{.}}</label></li>
+										{{end}}
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+						
+						<div class="panel-group">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title"><a id="destination-drop" data-toggle="collapse" href="#destination-collapse">Destination State<span id="destination-icon-drop" class="glyphicon glyphicon-chevron-right"></span></a></h4>
+								</div>
+								<div id="destination-collapse" class="panel-collapse collapse">
+									<ul class="list-group">
+										<li class="list-group-item"><label><input type="checkbox" name="to-state" value="any">Any</label></li>
+										{{range .Destinations}}
+										<li class="list-group-item"><label><input type="checkbox" name="to-state" value="{{.}}">{{.}}</label></li>
+										{{end}}
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+						
+						<div class="panel-group">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title"><a id="suppliers-drop" data-toggle="collapse" href="#supplier-collapse">Supplier<span id="suppliers-icon-drop" class="glyphicon glyphicon-chevron-right"></span></a></h4>
+								</div>
+								<div id="supplier-collapse" class="panel-collapse collapse">
+									<ul class="list-group">
+										{{range .Suppliers}}
+										<li class="list-group-item"><label><input type="checkbox" name="supplier" value="{{.}}">{{.}}</label></li>
+										{{end}}
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+						
+						<div class="panel-group">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title"><a id="carriers-drop" data-toggle="collapse" href="#carrier-collapse">Carrier<span id="carriers-icon-drop" class="glyphicon glyphicon-chevron-right"></span></a></h4>
+								</div>
+								<div id="carrier-collapse" class="panel-collapse collapse">
+									<ul class="list-group">
+										<li class="list-group-item"><label><input type="checkbox" name="carrier" value="any">Any</label></li>
+										{{range .Carriers}}
+										<li class="list-group-item"><label><input type="checkbox" name="carrier" value="{{.}}">{{.}}</label></li>
+										{{end}}
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+						
+					</div>	
+				</form>
+			</div>
+			<div class="col-md-6 content">	
+				<div class="list-group" id="customer-shipment-list">
+					{{range .Shipments}}
+					<a href="/orders/order/{{.ID | makeHex}}-Customer" class="list-group-item">
+						<h4 class="list-group-item-heading"><b>Shipment</b> {{.ID | makeHex}}</h4>
+						<p class="list-group-item-text"><b>Shipment Status:</b> {{.OrderSts.Status}} <b>ETA:</b> {{.ETA}}</p>
+						<p><b>Role: </b>Customer</p>
+					</a>
+					{{end}}
+					{{range .SupplierShipments}}
+					<a href="/orders/order/{{.ID | makeHex}}-Supplier" class="list-group-item">
+						<h4 class="list-group-item-heading"><b>Shipment</b> {{.ID | makeHex}}</h4>
+						<p class="list-group-item-text"><b>Shipment Status:</b> {{.OrderSts.Status}} <b>ETA:</b> {{.ETA}}</p>
+						<p><b>Role: </b>Supplier</p>
+					</a>
+					{{end}}
+					{{range .CarrierShipments}}
+					<a href="/orders/order/{{.ID | makeHex}}-Carrier" class="list-group-item">
+						<h4 class="list-group-item-heading"><b>Shipment</b> {{.ID | makeHex}}</h4>
+						<p class="list-group-item-text"><b>Shipment Status:</b> {{.OrderSts.Status}} <b>ETA:</b> {{.ETA}}</p>
+						<p><b>Role: </b>Carrier</p>
+					</a>
+					{{end}}
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+{{end}}

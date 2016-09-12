@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="/stylesheets/orders.css">
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">supplies</a>
+			</div>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#">Settings</a></li>
+				<li><a href="#">Log Out</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<!-- Breadcrumb -->
+	<div class="container-fluid" id="breadcrumb">
+		<ol class="breadcrumb">
+			<li><a href="#">home</a></li>
+			<li><a href="/orders/">orders</a></li>
+			<li class="active">{{.Ordernumber}}</li>
+		</ol>
+	</div>
+
+	<div class="container">
+		<div class="col-md-1"></div>
+		<div class="col-md-7">
+
+			<div class="panel panel-default">
+				<div class="panel-heading">Product List</div>					
+				<div class="panel-body" id="panel-products">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Code</th>
+								<th>State</th>
+								<th>Unit Measure</th>
+								<th>Unit Price</th>
+								<th>Quantity</th>
+							</tr>
+						</thead>
+						<tbody>
+						{{range .OrderList.ListOfProduct}}
+							<tr>
+								<td>{{.ProductName}}</td>
+								<td>{{.ProductCode}}</td>
+								<td>{{.ProductState}}</td>
+								<td>{{.UnitMeasure}}</td>
+								<td>{{.UnitPrice}}</td>
+								<td>{{.Quantity}}</td>
+							</tr>
+						{{end}}
+						</tbody>
+					</table>					
+				</div>
+			</div>
+
+		</div>
+
+		<div class="col-md-3">
+			<div class="panel-group">
+
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<p>Order Status: {{.OrderStatus}}</p>
+						<p>ETA: {{.PickUptime}}</p>
+					</div>
+				</div>
+
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<p>Order Number: {{.Ordernumber}}</p>
+						<p>Customer Code: {{.CustomerCode}}</p>
+						<p>Customer Name: {{.CustomerName}}</p>
+						<p>Supplier Code: {{.SupplierCode}}</p>
+						<p>Supplier Name: {{.SupplierName}}</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="col-md-1"></div>
+
+	</div>
+</body>
+</html>

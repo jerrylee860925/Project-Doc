@@ -1,0 +1,56 @@
+#logo{
+	font-family: Helvetica;
+	font-weight: bold;
+	padding: 0;
+	margin-top: 10px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+#logo-div{
+	padding: 0;
+	margin: o auto;	
+}
+
+#no-results{
+	margin: 125px;
+}
+
+#search-bar{
+	border-radius: 0;
+	/*margin-top: 0;
+	padding: 0;*/
+}
+
+#radio-div{
+	padding: 0;
+	margin-top: 12px;
+}
+
+#search-div{
+	padding-right: 0;
+	margin-top: 7px;
+}
+
+#btn-div{
+	margin-top: 7px;
+	padding-left: 0;
+}
+
+#search-btn{
+	border-radius: 0;
+	/*margin-top: 0;
+	padding: 0;*/
+}
+
+th{
+	background-color: #e6e6fa;
+}
+
+.navbar{
+	background-color: #c0d6e4;
+}
+
+span{
+	margin-left: 20px;
+}
